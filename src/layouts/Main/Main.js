@@ -1,6 +1,7 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
 import Header from "../../components/Header/Header";
+import Navbar from "../../components/Navbar/Navbar";
 import Sidebar from "../../components/Sidebar/Sidebar";
 import "./Main.css";
 
@@ -17,6 +18,9 @@ const Main = () => {
           </div>
           <div className="todo-content col-span-4">
             <div className="main-outlet">
+              <div className="inline-navbar">
+                <Navbar></Navbar>
+              </div>
               <Outlet></Outlet>
             </div>
           </div>

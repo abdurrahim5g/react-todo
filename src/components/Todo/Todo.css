@@ -1,0 +1,3 @@
+section.todo-content .single-todo:last-child > div {
+  border-bottom: none;
+}

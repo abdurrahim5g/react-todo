@@ -1,4 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
+import TodoContent from "../components/TodoContent/TodoContent";
 import Main from "../layouts/Main/Main";
 
 const router = createBrowserRouter([
@@ -7,10 +8,10 @@ const router = createBrowserRouter([
     element: <Main></Main>,
 
     children: [
-      { path: "/", element: <h3>Home</h3> },
-      { path: "/learning", element: <h3>Learning</h3> },
-      { path: "/todo", element: <h3>Todo</h3> },
-      { path: "/clients-todo", element: <h3>Clients Todo</h3> },
+      { path: "/", element: <TodoContent></TodoContent> },
+      { path: "/learning", element: <TodoContent></TodoContent> },
+      { path: "/todo", element: <TodoContent></TodoContent> },
+      { path: "/clients-todo", element: <TodoContent></TodoContent> },
     ],
   },
 ]);
