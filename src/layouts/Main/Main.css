@@ -1,0 +1,6 @@
+.left-sidebar {
+  background: #5b7cfd;
+  height: calc(100vh - 64px);
+  border-radius: 0 70px 0 0;
+  padding: 70px 0 50px 50px;
+}
