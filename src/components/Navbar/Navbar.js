@@ -5,8 +5,10 @@ import {
   UilFileCheckAlt,
   UilGraduationCap,
   UilUserArrows,
+  UilPlus,
 } from "@iconscout/react-unicons";
 import "./Navbar.css";
+import { isTodoPopupShow } from "../../utility/utility";
 
 const Navbar = () => {
   return (
@@ -18,6 +20,9 @@ const Navbar = () => {
             className="block  text-gray-200 font-semibold py-4 px-10"
           >
             <UilHome className="float-left mr-4"></UilHome> Home
+            <span>
+              <UilPlus onClick={() => isTodoPopupShow(true)}></UilPlus>
+            </span>
           </NavLink>
         </li>
         <li>
@@ -27,6 +32,9 @@ const Navbar = () => {
           >
             <UilGraduationCap className="float-left mr-4"></UilGraduationCap>{" "}
             Learning
+            <span>
+              <UilPlus onClick={() => isTodoPopupShow(true)}></UilPlus>
+            </span>
           </NavLink>
         </li>
         <li>
@@ -35,6 +43,9 @@ const Navbar = () => {
             className="block  text-gray-200 font-semibold py-4 px-10"
           >
             <UilFileCheckAlt className="float-left mr-4"></UilFileCheckAlt> Todo
+            <span>
+              <UilPlus onClick={() => isTodoPopupShow(true)}></UilPlus>
+            </span>
           </NavLink>
         </li>
         <li>
@@ -44,6 +55,9 @@ const Navbar = () => {
           >
             <UilUserArrows className="float-left mr-4"></UilUserArrows> Client
             Todo
+            <span>
+              <UilPlus onClick={() => isTodoPopupShow(true)}></UilPlus>
+            </span>
           </NavLink>
         </li>
       </ul>

@@ -3,11 +3,11 @@ import SingleFormItem from "../SingleFormItem/SingleFormItem";
 import "./AddTodoPopup.css";
 import checklist from "./images/check-list.png";
 import { UilCheckSquare } from "@iconscout/react-unicons";
-import { isTodoPopupShow } from "../../utility/utility";
+import { getDataFromTodoForm, isTodoPopupShow } from "../../utility/utility";
 
 const AddTodoPopup = () => {
   return (
-    <section className="add-todo-popup" id="addTodoPopup">
+    <section className="add-todo-popup hidden" id="addTodoPopup">
       <div
         id="backdrop"
         className="backdrop"
@@ -52,7 +52,11 @@ const AddTodoPopup = () => {
             id="todoDescription"
           ></SingleFormItem>
 
-          <button className="w-3/4 mx-auto flex bg-blue-500 py-3 px-10 rounded mt-6  text-white font-semibold items-center justify-center transition hover:bg-blue-400">
+          <button
+            onClick={getDataFromTodoForm}
+            id="todoFormSubmit"
+            className="w-3/4 mx-auto flex bg-blue-500 py-3 px-10 rounded mt-6  text-white font-semibold items-center justify-center transition hover:bg-blue-400"
+          >
             <UilCheckSquare className="mr-4"></UilCheckSquare> Add toto
           </button>
         </div>

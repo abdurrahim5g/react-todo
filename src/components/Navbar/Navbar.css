@@ -27,3 +27,17 @@
   border-radius: 40px;
   color: #fff;
 }
+
+ul.nav-menu span {
+  float: right;
+  transition: 0.2s;
+}
+
+ul.nav-menu span:hover {
+  background: #fff;
+  color: #5b7cfd;
+}
+
+.inline-navbar span {
+  display: none;
+}
