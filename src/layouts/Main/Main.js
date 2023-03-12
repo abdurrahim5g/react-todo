@@ -1,5 +1,6 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
+import AddTodoPopup from "../../components/AddTodoPopup/AddTodoPopup";
 import Header from "../../components/Header/Header";
 import Navbar from "../../components/Navbar/Navbar";
 import Sidebar from "../../components/Sidebar/Sidebar";
@@ -22,6 +23,7 @@ const Main = () => {
                 <Navbar></Navbar>
               </div>
               <Outlet></Outlet>
+              <AddTodoPopup></AddTodoPopup>
             </div>
           </div>
         </div>
