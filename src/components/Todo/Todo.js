@@ -2,21 +2,23 @@ import React from "react";
 import Button from "../Button/Button";
 import "./Todo.css";
 
-const Todo = () => {
+const Todo = ({ todoItem }) => {
+  const { title, desc, startEndTime, status } = todoItem;
+  console.log(todoItem);
   return (
-    <div className="single-todo hover:bg-slate-50 transition">
+    <div
+      className={`single-todo hover:bg-slate-50 transition ${
+        status && "complete"
+      }`}
+    >
       <div className=" border-b py-8 px-8 ">
         <h4 className="todo-title font-semibold text-2xl text-gray-700">
-          Lorem ipsum dolor sit amet.
+          {title}
         </h4>
         <p className="my-2 text-gray-700">
-          <strong>Time:</strong> 10am to 10pm
+          <strong>Time:</strong> {startEndTime}
         </p>
-        <p className="text-gray-700 mb-3">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta beatae
-          dolores id nesciunt expedita, facilis distinctio facere veritatis unde
-          fugiat?
-        </p>
+        <p className="text-gray-700 mb-3">{desc}</p>
         <div className="status">
           <Button className="active">Done</Button>
         </div>

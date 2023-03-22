@@ -20,36 +20,31 @@ const AddTodoPopup = () => {
               <img src={checklist} alt="Todo checklist" className="pr-5" />
             </div>
             <div className="text col-span-3">
-              <h4 className="text-2xl font-semibold mb-2">
-                Lorem, ipsum dolor.
-              </h4>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non,
-                temporibus.
-              </p>
+              <h4 className="text-2xl font-semibold mb-2">Add your todo ✔</h4>
+              <p>Give a short description for knowing your todo instant ✅</p>
             </div>
           </div>
         </header>
         <div className="popupTodoForm">
-          <SingleFormItem label="Todo Title" id="todoTitle"></SingleFormItem>
+          <SingleFormItem
+            label="Todo Title"
+            id="todoTitle"
+            placeholder="Enter your title"
+          ></SingleFormItem>
 
-          <div className="grid star-end-time grid-cols-2 gap-6 my-7">
-            <SingleFormItem
-              type="time"
-              label="Start Time"
-              id="startTime"
-            ></SingleFormItem>
-            <SingleFormItem
-              type="time"
-              label="End Time"
-              id="endTime"
-            ></SingleFormItem>
-          </div>
+          <SingleFormItem
+            type="text"
+            label="Start & End Time"
+            id="startEndTime"
+            className="my-5"
+            placeholder="10am to 12pm"
+          ></SingleFormItem>
 
           <SingleFormItem
             type="todoDescription"
             label="Todo Description"
             id="todoDescription"
+            placeholder="Short description about your todo 📝"
           ></SingleFormItem>
 
           <button

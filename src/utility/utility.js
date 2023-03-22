@@ -14,22 +14,20 @@ const todo = [];
 const getDataFromTodoForm = () => {
   const title = document.getElementById("todoTitle");
   const desc = document.getElementById("todoDescription");
-  const startTime = document.getElementById("startTime");
-  const endTime = document.getElementById("endTime");
+  const startEndTime = document.getElementById("startEndTime");
   const id = new Date().getTime();
 
   const newTodo = {
     id: id,
     title: title.value,
     desc: desc.value,
-    startTime: startTime.value,
-    endTime: endTime.value,
+    startEndTime: startEndTime.value,
     status: 0,
   };
   todo.push(newTodo);
-  setTodoIntoLocalstorage("todo");
+  setTodoIntoLocalstorage(getKeyFromURL());
 
-  title.value = desc.value = startTime.value = endTime.value = "";
+  title.value = desc.value = startEndTime.value = "";
 
   return false;
 };
@@ -38,4 +36,13 @@ const getDataFromTodoForm = () => {
 const setTodoIntoLocalstorage = (key = "todo") => {
   localStorage.setItem(key, JSON.stringify(todo));
 };
+
+// get the pathname from url
+const getKeyFromURL = () => {
+  const path = window.location.pathname;
+  const filterKey = path.substring(1);
+  return filterKey;
+};
+
+// export all the functions from hare
 export { isTodoPopupShow, getDataFromTodoForm, setTodoIntoLocalstorage };
