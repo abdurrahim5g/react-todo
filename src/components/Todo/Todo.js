@@ -4,7 +4,7 @@ import "./Todo.css";
 
 const Todo = ({ todoItem }) => {
   const { title, desc, startEndTime, status } = todoItem;
-  console.log(todoItem);
+  console.log(todoItem.id);
   return (
     <div
       className={`single-todo hover:bg-slate-50 transition ${

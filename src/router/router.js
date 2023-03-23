@@ -8,10 +8,16 @@ const router = createBrowserRouter([
     element: <Main></Main>,
 
     children: [
-      { path: "/", element: <TodoContent></TodoContent> },
-      { path: "/learning", element: <TodoContent></TodoContent> },
-      { path: "/todo", element: <TodoContent></TodoContent> },
-      { path: "/clients-todo", element: <TodoContent></TodoContent> },
+      { path: "/", element: <TodoContent todoKey="home"></TodoContent> },
+      {
+        path: "/learning",
+        element: <TodoContent todoKey="learning"></TodoContent>,
+      },
+      { path: "/todo", element: <TodoContent todoKey="todo"></TodoContent> },
+      {
+        path: "/clients-todo",
+        element: <TodoContent todoKey="clients-todo"></TodoContent>,
+      },
     ],
   },
 ]);

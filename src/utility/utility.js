@@ -2,15 +2,12 @@ const isTodoPopupShow = (boolean = false) => {
   const popup = document.getElementById("addTodoPopup");
   !boolean && popup.classList.add("hidden");
   boolean && popup.classList.remove("hidden");
-
-  console.log(boolean);
 };
 
 /**
  *
  * Handle todoForm
  */
-const todo = [];
 const getDataFromTodoForm = () => {
   const title = document.getElementById("todoTitle");
   const desc = document.getElementById("todoDescription");
@@ -24,8 +21,19 @@ const getDataFromTodoForm = () => {
     startEndTime: startEndTime.value,
     status: 0,
   };
-  todo.push(newTodo);
-  setTodoIntoLocalstorage(getKeyFromURL());
+
+  // check the localStorage is inatilized before or not
+  if (localStorage.getItem(getKeyFromURL())) {
+    const prevTodoString = localStorage.getItem(getKeyFromURL());
+    const prevTodoArray = JSON.parse(prevTodoString);
+    prevTodoArray.push(newTodo);
+    const currentTodo = prevTodoArray;
+
+    setTodoIntoLocalstorage(currentTodo, getKeyFromURL());
+  } else {
+    console.log("not set");
+    setTodoIntoLocalstorage([newTodo], getKeyFromURL());
+  }
 
   title.value = desc.value = startEndTime.value = "";
 
@@ -33,7 +41,8 @@ const getDataFromTodoForm = () => {
 };
 
 // set the value into localStorage
-const setTodoIntoLocalstorage = (key = "todo") => {
+const setTodoIntoLocalstorage = (todo, key = "todo") => {
+  console.log(todo);
   localStorage.setItem(key, JSON.stringify(todo));
 };
 
@@ -45,4 +54,9 @@ const getKeyFromURL = () => {
 };
 
 // export all the functions from hare
-export { isTodoPopupShow, getDataFromTodoForm, setTodoIntoLocalstorage };
+export {
+  isTodoPopupShow,
+  getDataFromTodoForm,
+  setTodoIntoLocalstorage,
+  getKeyFromURL,
+};
