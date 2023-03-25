@@ -1,3 +1,18 @@
 section.todo-content .single-todo:first-child > div {
   border-top: none;
 }
+.single-todo {
+  position: relative;
+}
+
+.single-todo .done {
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding: 5px 30px;
+  color: #fff;
+  font-weight: 600;
+  z-index: 1;
+  background: #5b7cfd;
+  border-radius: 0 0 35px 0;
+}

@@ -53,10 +53,33 @@ const getKeyFromURL = () => {
   return filterKey;
 };
 
+// get todo from localStorage
+const getTodoFromLocalStorage = () => {
+  const todoString = localStorage.getItem(getKeyFromURL());
+  const todoArray = JSON.parse(todoString);
+  return todoArray;
+};
+
+// complete todo function
+const completeTodo = (id, setTodo) => {
+  const allTodo = getTodoFromLocalStorage();
+
+  allTodo.forEach((singleTodo) => {
+    if (id === singleTodo.id) {
+      singleTodo.status = 1;
+      console.log("After", allTodo);
+      setTodoIntoLocalstorage(allTodo, getKeyFromURL());
+      setTodo(allTodo);
+    }
+  });
+};
+
 // export all the functions from hare
 export {
   isTodoPopupShow,
   getDataFromTodoForm,
   setTodoIntoLocalstorage,
   getKeyFromURL,
+  completeTodo,
+  getTodoFromLocalStorage,
 };

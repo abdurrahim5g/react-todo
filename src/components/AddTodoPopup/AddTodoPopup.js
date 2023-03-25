@@ -3,9 +3,13 @@ import SingleFormItem from "../SingleFormItem/SingleFormItem";
 import "./AddTodoPopup.css";
 import checklist from "./images/check-list.png";
 import { UilCheckSquare } from "@iconscout/react-unicons";
-import { getDataFromTodoForm, isTodoPopupShow } from "../../utility/utility";
+import {
+  getDataFromTodoForm,
+  getKeyFromURL,
+  isTodoPopupShow,
+} from "../../utility/utility";
 
-const AddTodoPopup = () => {
+const AddTodoPopup = ({ setTodo }) => {
   return (
     <section className="add-todo-popup hidden" id="addTodoPopup">
       <div
@@ -48,7 +52,10 @@ const AddTodoPopup = () => {
           ></SingleFormItem>
 
           <button
-            onClick={getDataFromTodoForm}
+            onClick={() => {
+              getDataFromTodoForm();
+              setTodo(JSON.parse(localStorage.getItem(getKeyFromURL())));
+            }}
             id="todoFormSubmit"
             className="w-3/4 mx-auto flex bg-blue-500 py-3 px-10 rounded mt-6  text-white font-semibold items-center justify-center transition hover:bg-blue-400"
           >
