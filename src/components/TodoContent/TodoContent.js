@@ -1,20 +1,25 @@
 import React, { useEffect, useState } from "react";
 import Todo from "../Todo/Todo";
 import "./TodoContent.css";
-import AddTodoPopup from "../AddTodoPopup/AddTodoPopup";
+import AddTodo from "../AddTodo/AddTodo";
+import Popup from "../Popup/Popup";
+import Title from "../Title/Title";
 
 const TodoContent = ({ todoKey }) => {
   const [todo, setTodo] = useState([]);
 
-  const noTodoMessage = !todo && (
-    <h2 className="no-todo text-center text-2xl font-semibold mt-12">
-      You don't have any task today
-    </h2>
+  const noTodoMessage = todo?.length === 0 && (
+    <Title className="text-center my-12">You don't have any task today</Title>
   );
   // console.log(props);
 
   useEffect(() => {
-    setTodo(JSON.parse(localStorage.getItem(todoKey)));
+    const todoArray = JSON.parse(localStorage.getItem(todoKey));
+    if (todoArray?.length > 0) {
+      setTodo(todoArray);
+    } else {
+      setTodo([]);
+    }
   }, [todoKey]);
 
   return (
@@ -23,7 +28,9 @@ const TodoContent = ({ todoKey }) => {
         <Todo key={todoItem.id} todoItem={todoItem} setTodo={setTodo}></Todo>
       ))}
       {noTodoMessage}
-      <AddTodoPopup setTodo={setTodo}></AddTodoPopup>
+      <Popup>
+        <AddTodo setTodo={setTodo}></AddTodo>
+      </Popup>
     </section>
   );
 };

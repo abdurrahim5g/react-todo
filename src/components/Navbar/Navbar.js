@@ -8,7 +8,7 @@ import {
   UilPlus,
 } from "@iconscout/react-unicons";
 import "./Navbar.css";
-import { isTodoPopupShow } from "../../utility/utility";
+import { isPopupShow } from "../../utility/utility";
 
 const Navbar = () => {
   return (
@@ -21,7 +21,7 @@ const Navbar = () => {
           >
             <UilHome className="float-left mr-4"></UilHome> Home
             <span>
-              <UilPlus onClick={() => isTodoPopupShow(true)}></UilPlus>
+              <UilPlus onClick={() => isPopupShow(true)}></UilPlus>
             </span>
           </NavLink>
         </li>
@@ -33,7 +33,7 @@ const Navbar = () => {
             <UilGraduationCap className="float-left mr-4"></UilGraduationCap>{" "}
             Learning
             <span>
-              <UilPlus onClick={() => isTodoPopupShow(true)}></UilPlus>
+              <UilPlus onClick={() => isPopupShow(true)}></UilPlus>
             </span>
           </NavLink>
         </li>
@@ -44,7 +44,7 @@ const Navbar = () => {
           >
             <UilFileCheckAlt className="float-left mr-4"></UilFileCheckAlt> Todo
             <span>
-              <UilPlus onClick={() => isTodoPopupShow(true)}></UilPlus>
+              <UilPlus onClick={() => isPopupShow(true)}></UilPlus>
             </span>
           </NavLink>
         </li>
@@ -56,7 +56,7 @@ const Navbar = () => {
             <UilUserArrows className="float-left mr-4"></UilUserArrows> Client
             Todo
             <span>
-              <UilPlus onClick={() => isTodoPopupShow(true)}></UilPlus>
+              <UilPlus onClick={() => isPopupShow(true)}></UilPlus>
             </span>
           </NavLink>
         </li>

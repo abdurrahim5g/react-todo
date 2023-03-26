@@ -1,5 +1,5 @@
-const isTodoPopupShow = (boolean = false) => {
-  const popup = document.getElementById("addTodoPopup");
+const isPopupShow = (boolean = false, elementId) => {
+  const popup = document.getElementById(elementId ? elementId : "popup");
   !boolean && popup.classList.add("hidden");
   boolean && popup.classList.remove("hidden");
 };
@@ -74,12 +74,22 @@ const completeTodo = (id, setTodo) => {
   });
 };
 
+// delete todo from localstorage
+const deleteTodo = (id, setTodo) => {
+  const oldTodo = getTodoFromLocalStorage();
+  const currentTodo = oldTodo.filter((todo) => todo.id !== id);
+
+  setTodoIntoLocalstorage(currentTodo, getKeyFromURL());
+  setTodo(getTodoFromLocalStorage());
+};
+
 // export all the functions from hare
 export {
-  isTodoPopupShow,
+  isPopupShow,
   getDataFromTodoForm,
   setTodoIntoLocalstorage,
   getKeyFromURL,
   completeTodo,
   getTodoFromLocalStorage,
+  deleteTodo,
 };
