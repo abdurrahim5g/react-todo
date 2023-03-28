@@ -8,7 +8,7 @@ import {
   UilPlus,
 } from "@iconscout/react-unicons";
 import "./Navbar.css";
-import { isPopupShow } from "../../utility/utility";
+import { clearTodoForm, isPopupShow, isUpdate } from "../../utility/utility";
 
 const Navbar = () => {
   return (
@@ -21,7 +21,13 @@ const Navbar = () => {
           >
             <UilHome className="float-left mr-4"></UilHome> Home
             <span>
-              <UilPlus onClick={() => isPopupShow(true)}></UilPlus>
+              <UilPlus
+                onClick={() => {
+                  clearTodoForm();
+                  isPopupShow(true);
+                  isUpdate(false);
+                }}
+              ></UilPlus>
             </span>
           </NavLink>
         </li>
@@ -33,7 +39,13 @@ const Navbar = () => {
             <UilGraduationCap className="float-left mr-4"></UilGraduationCap>{" "}
             Learning
             <span>
-              <UilPlus onClick={() => isPopupShow(true)}></UilPlus>
+              <UilPlus
+                onClick={() => {
+                  clearTodoForm();
+                  isPopupShow(true);
+                  isUpdate(false);
+                }}
+              ></UilPlus>
             </span>
           </NavLink>
         </li>
@@ -44,7 +56,13 @@ const Navbar = () => {
           >
             <UilFileCheckAlt className="float-left mr-4"></UilFileCheckAlt> Todo
             <span>
-              <UilPlus onClick={() => isPopupShow(true)}></UilPlus>
+              <UilPlus
+                onClick={() => {
+                  clearTodoForm();
+                  isPopupShow(true);
+                  isUpdate(false);
+                }}
+              ></UilPlus>
             </span>
           </NavLink>
         </li>
@@ -56,7 +74,13 @@ const Navbar = () => {
             <UilUserArrows className="float-left mr-4"></UilUserArrows> Client
             Todo
             <span>
-              <UilPlus onClick={() => isPopupShow(true)}></UilPlus>
+              <UilPlus
+                onClick={() => {
+                  clearTodoForm();
+                  isPopupShow(true);
+                  isUpdate(false);
+                }}
+              ></UilPlus>
             </span>
           </NavLink>
         </li>

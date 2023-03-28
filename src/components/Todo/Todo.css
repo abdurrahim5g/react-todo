@@ -16,3 +16,7 @@ section.todo-content .single-todo:first-child > div {
   background: #5b7cfd;
   border-radius: 0 0 35px 0;
 }
+
+.description p {
+  letter-spacing: 0.5px;
+}

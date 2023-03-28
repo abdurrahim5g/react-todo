@@ -1,5 +1,5 @@
 import React from "react";
-import { completeTodo, isPopupShow } from "../../utility/utility";
+import { completeTodo, editTodo, isPopupShow } from "../../utility/utility";
 import Button from "../Button/Button";
 import DeleteTodo from "../DeleteTodo/DeleteTodo";
 import Popup from "../Popup/Popup";
@@ -11,7 +11,6 @@ const Todo = ({ todoItem, setTodo }) => {
   const { id, title, desc, startEndTime, status } = todoItem;
   const newDescription = desc.split("\n");
   const popupId = `id-${id}`;
-  console.log(popupId);
 
   return (
     <div
@@ -28,7 +27,7 @@ const Todo = ({ todoItem, setTodo }) => {
         </p>
         <div className="description mb-3">
           {newDescription.map((singleLine, index) => (
-            <p className="text-gray-700 " key={index}>
+            <p className="text-gray-700  " key={index}>
               {singleLine}
             </p>
           ))}
@@ -45,7 +44,7 @@ const Todo = ({ todoItem, setTodo }) => {
             <>
               <Button
                 className="bg-amber-400	hover:bg-amber-300"
-                onClick={() => completeTodo(id, setTodo)}
+                onClick={() => editTodo(id)}
               >
                 Edit
               </Button>

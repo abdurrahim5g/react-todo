@@ -2,10 +2,15 @@ import React from "react";
 import SingleFormItem from "../SingleFormItem/SingleFormItem";
 import "./AddTodo.css";
 import checklist from "./images/check-list.png";
-import { UilCheckSquare } from "@iconscout/react-unicons";
-import { getDataFromTodoForm, getKeyFromURL } from "../../utility/utility";
 
-const AddTodo = ({ setTodo }) => {
+import {
+  updateTodo,
+  getDataFromTodoForm,
+  getKeyFromURL,
+} from "../../utility/utility";
+import RoundButton from "../RoundButton/RoundButton";
+
+const AddTodo = ({ setTodo, idEdit = false }) => {
   return (
     <div className="todo-form">
       <header className="popup-header">
@@ -41,16 +46,25 @@ const AddTodo = ({ setTodo }) => {
           placeholder="Short description about your todo 📝"
         ></SingleFormItem>
 
-        <button
+        <RoundButton
+          id="todoFormSubmit"
           onClick={() => {
             getDataFromTodoForm();
             setTodo(JSON.parse(localStorage.getItem(getKeyFromURL())));
           }}
-          id="todoFormSubmit"
-          className="w-3/4 mx-auto flex bg-blue-500 py-3 px-10 rounded mt-6  text-white font-semibold items-center justify-center transition hover:bg-blue-400"
         >
-          <UilCheckSquare className="mr-4"></UilCheckSquare> Add toto
-        </button>
+          Add Todo
+        </RoundButton>
+
+        <RoundButton
+          id="updateTodo"
+          className="hidden"
+          onClick={() => {
+            updateTodo(setTodo);
+          }}
+        >
+          Update Todo
+        </RoundButton>
       </div>
     </div>
   );

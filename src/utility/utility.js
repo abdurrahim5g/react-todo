@@ -1,7 +1,34 @@
+// get input value
+const getElement = (id) => {
+  return document.getElementById(id);
+};
+
+// checking what the user want to do? Update or Add
+const isUpdate = (boolean = false) => {
+  const todoFormSubmit = getElement("todoFormSubmit");
+  const updateTodo = getElement("updateTodo");
+  console.log(boolean);
+  if (boolean) {
+    updateTodo.classList.remove("hidden");
+    todoFormSubmit.classList.add("hidden");
+  } else {
+    updateTodo.classList.add("hidden");
+    todoFormSubmit.classList.remove("hidden");
+  }
+};
+
 const isPopupShow = (boolean = false, elementId) => {
-  const popup = document.getElementById(elementId ? elementId : "popup");
+  const popup = getElement(elementId ? elementId : "popup");
   !boolean && popup.classList.add("hidden");
   boolean && popup.classList.remove("hidden");
+};
+
+// clear todo form
+const clearTodoForm = () => {
+  const title = getElement("todoTitle");
+  const desc = getElement("todoDescription");
+  const startEndTime = getElement("startEndTime");
+  title.value = desc.value = startEndTime.value = "";
 };
 
 /**
@@ -9,9 +36,9 @@ const isPopupShow = (boolean = false, elementId) => {
  * Handle todoForm
  */
 const getDataFromTodoForm = () => {
-  const title = document.getElementById("todoTitle");
-  const desc = document.getElementById("todoDescription");
-  const startEndTime = document.getElementById("startEndTime");
+  const title = getElement("todoTitle");
+  const desc = getElement("todoDescription");
+  const startEndTime = getElement("startEndTime");
   const id = new Date().getTime();
 
   const newTodo = {
@@ -83,6 +110,58 @@ const deleteTodo = (id, setTodo) => {
   setTodo(getTodoFromLocalStorage());
 };
 
+const editTodo = (id) => {
+  const oldTodo = getTodoFromLocalStorage();
+  const targetedTodo = oldTodo.find((todo) => todo.id === id);
+  const { title, desc, startEndTime } = targetedTodo;
+
+  const todoTitle = getElement("todoTitle");
+  const todoDesc = getElement("todoDescription");
+  const todoTime = getElement("startEndTime");
+
+  todoTitle.value = title;
+  todoDesc.value = desc;
+  todoTime.value = startEndTime;
+  console.log(targetedTodo);
+
+  const updateButton = getElement("updateTodo");
+  updateButton.setAttribute("todo-id", id);
+  console.log(id);
+
+  isUpdate(true);
+  isPopupShow(true);
+};
+
+const updateTodo = (setTodo) => {
+  const updateButton = getElement("updateTodo");
+  const editId = +updateButton.getAttribute("todo-id");
+
+  // get current todo on localStorage
+  const currentTodo = getTodoFromLocalStorage();
+
+  // get updated data from the form
+  const updateTodoTitle = getElement("todoTitle").value;
+  const updateTodoDesc = getElement("todoDescription").value;
+  const updateTodoTime = getElement("startEndTime").value;
+
+  const updatedTodo = currentTodo.map((todo) => {
+    if (todo.id === editId) {
+      console.log(todo.id);
+      todo.title = updateTodoTitle;
+      todo.desc = updateTodoDesc;
+      todo.startEndTime = updateTodoTime;
+    }
+    return todo;
+  });
+
+  setTodoIntoLocalstorage(updatedTodo, getKeyFromURL());
+  setTodo(updatedTodo);
+
+  isPopupShow(false);
+
+  console.log(updatedTodo);
+};
+
 // export all the functions from hare
 export {
   isPopupShow,
@@ -92,4 +171,8 @@ export {
   completeTodo,
   getTodoFromLocalStorage,
   deleteTodo,
+  editTodo,
+  updateTodo,
+  isUpdate,
+  clearTodoForm,
 };
