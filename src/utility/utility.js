@@ -171,8 +171,8 @@ const getLocalStorage = (key) => {
 const totalTask = (key) => {
   const task = getLocalStorage(key);
   // get task in number
-  const totalTask = task.length;
-  return totalTask;
+  const totalTask = task?.length;
+  return totalTask ? totalTask : 0;
 };
 
 // completed task
