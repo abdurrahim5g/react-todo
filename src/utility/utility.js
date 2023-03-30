@@ -156,10 +156,34 @@ const updateTodo = (setTodo) => {
 
   setTodoIntoLocalstorage(updatedTodo, getKeyFromURL());
   setTodo(updatedTodo);
-
   isPopupShow(false);
-
   console.log(updatedTodo);
+};
+
+const getLocalStorage = (key) => {
+  const taskString = localStorage.getItem(key);
+  const taskArray = JSON.parse(taskString);
+  // return localStorage data as an array
+  return taskArray;
+};
+
+// total Task
+const totalTask = (key) => {
+  const task = getLocalStorage(key);
+  // get task in number
+  const totalTask = task.length;
+  return totalTask;
+};
+
+// completed task
+const completedTask = (key) => {
+  let completeTask = 0;
+  const task = getLocalStorage(key);
+  if (task?.length > 0) {
+    task.forEach((single) => single.status === 1 && completeTask++);
+  }
+  // console.log(task);
+  return completeTask;
 };
 
 // export all the functions from hare
@@ -175,4 +199,6 @@ export {
   updateTodo,
   isUpdate,
   clearTodoForm,
+  totalTask,
+  completedTask,
 };
