@@ -16,7 +16,7 @@ const Dashboard = () => {
           <InfoCard key={index} task={task}></InfoCard>
         ))}
       </div>
-      <div className="performance grid grid-cols-2 gap-5 mt-8">
+      <div className="performance  grid-cols-2 gap-5 mt-8 hidden">
         <div className="col-span-1 bg-white rounded-lg shadow-md py-5 px-7">
           <Performance></Performance>
         </div>
