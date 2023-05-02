@@ -5,6 +5,7 @@ import DeleteTodo from "../DeleteTodo/DeleteTodo";
 import Popup from "../Popup/Popup";
 import Title from "../Title/Title";
 // import completeImg from "./check.png";
+import Linkify from "react-linkify";
 import "./Todo.css";
 
 const Todo = ({ todoItem, setTodo }) => {
@@ -28,7 +29,15 @@ const Todo = ({ todoItem, setTodo }) => {
         <div className="description mb-3">
           {newDescription.map((singleLine, index) => (
             <p className="text-gray-700  " key={index}>
-              {singleLine}
+              <Linkify
+                componentDecorator={(decoratedHref, decoratedText, key) => (
+                  <a target="blank" href={decoratedHref} key={key}>
+                    {decoratedText}
+                  </a>
+                )}
+              >
+                {singleLine}
+              </Linkify>
             </p>
           ))}
         </div>

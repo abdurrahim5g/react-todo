@@ -20,3 +20,8 @@ section.todo-content .single-todo:first-child > div {
 .description p {
   letter-spacing: 0.5px;
 }
+
+.description a {
+  color: #5b7cfd;
+  font-weight: 500;
+}
