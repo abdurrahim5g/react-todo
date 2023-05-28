@@ -2,8 +2,19 @@ import React from "react";
 import InfoCard from "../InfoCard/InfoCard";
 import Performance from "../Performance/Performance";
 import SourceOfTask from "../SourceOfTask/SourceOfTask";
+import addNotification, { Notifications } from "react-push-notification";
 
 const Dashboard = () => {
+  const pushNotifi = () => {
+    addNotification({
+      title: "Warning",
+      subtitle: "This is a subtitle",
+      message: "This is a very long message",
+      theme: "darkblue",
+      native: true, // when using native, your OS will handle theming.
+    });
+  };
+
   const taskName = [
     { id: 0, title: "Learning Task" },
     { id: 1, title: "My Todo" },
@@ -11,6 +22,7 @@ const Dashboard = () => {
   ];
   return (
     <section className="dashboard">
+      <Notifications></Notifications>
       <div className="card-group grid grid-cols-3 gap-5">
         {taskName?.map((task, index) => (
           <InfoCard key={index} task={task}></InfoCard>
@@ -25,6 +37,9 @@ const Dashboard = () => {
             <SourceOfTask></SourceOfTask>
           </div>
         </div>
+      </div>
+      <div className="notification-container">
+        <button onClick={pushNotifi}>Click for notification</button>
       </div>
     </section>
   );
