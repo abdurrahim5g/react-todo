@@ -4,8 +4,19 @@ import Header from "../../components/Header/Header";
 import Navbar from "../../components/Navbar/Navbar";
 import Sidebar from "../../components/Sidebar/Sidebar";
 import "./Main.css";
+import Popup from "../../components/Popup/Popup";
 
 const Main = () => {
+  document.onkeydown = function (e) {
+    if (e.key === "Escape") {
+      const popup = document.getElementById("popup");
+      popup.classList.add("hidden");
+      console.log("Popup hide");
+    } else {
+      return;
+    }
+  };
+
   return (
     <>
       <header>
@@ -22,6 +33,7 @@ const Main = () => {
                 <Navbar></Navbar>
               </div>
               <Outlet></Outlet>
+              <Popup></Popup>
             </div>
           </div>
         </div>

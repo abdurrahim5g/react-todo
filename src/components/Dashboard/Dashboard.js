@@ -39,7 +39,7 @@ const Dashboard = () => {
         </div>
       </div>
       <div className="notification-container">
-        <button onClick={pushNotifi}>Click for notification</button>
+        <button onClick={pushNotifi}>{/* Click for notification */}</button>
       </div>
     </section>
   );
