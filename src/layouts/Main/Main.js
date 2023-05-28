@@ -7,6 +7,7 @@ import "./Main.css";
 import Popup from "../../components/Popup/Popup";
 
 const Main = () => {
+  // hide popup by clicking "Escape" key
   document.onkeydown = function (e) {
     if (e.key === "Escape") {
       const popup = document.getElementById("popup");
@@ -14,6 +15,16 @@ const Main = () => {
       console.log("Popup hide");
     } else {
       return;
+    }
+  };
+
+  // select #todoTitle input field by clicking `ArrowUp`
+  document.onkeyup = (event) => {
+    if (event.key === "ArrowUp") {
+      const todoTitle = document.getElementById("todoTitle");
+      if (todoTitle) {
+        todoTitle.focus();
+      }
     }
   };
 
